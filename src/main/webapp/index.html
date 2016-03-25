@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport"  content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta content="telephone=no" name="format-detection" />
+		<title>日志监听</title>
+		<script src="/js/jquery-2.0.3.min.js"></script>
+		<script src="/js/log.js"></script>
+	</head>
+	<body style="background-color: black;">
+		<input type="text" id="sessionId"/>
+		<button id="empty" onclick="empty()">清空日志</button>
+		<div id="log" style="font-size: 12px">
+		</div>
+	</body>
+	
+	<script type="text/javascript">
+		//打印日志
+		function print(log){
+			var log = eval("(" + log + ")");
+			var grade = log.grade;
+			var message = log.message;
+			
+			if(grade == 'log'){
+				log = '<font style="color: white;">';
+			}else if(grade == 'info'){
+				log = '<font style="color: blue;">';
+			}else if(grade == 'error'){
+				log = '<font style="color: red;">';
+			}else if(grade == 'warn'){
+				log = '<font style="color: yellow;">';
+			}
+			
+			log += message + '</font>';
+			
+			var oldlog = $('#log').html();
+			
+			$('#log').html(oldlog + '<br><br>' + log + '<br>');
+			
+			var h = $(document).height()-$(window).height();
+		  	$(document).scrollTop(h);
+		}
+		
+		//清空日志
+		function empty(){
+			$('#log').html('');
+		}
+	</script>
+</html>
