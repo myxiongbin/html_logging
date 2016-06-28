@@ -37,116 +37,116 @@
 //		console.log('Error occured: ' + evt.data); 
 	}
 	
-//	//日志发送
-//	function send(log){
-//		log.type = navigator.userAgent
-//		
-//		try{
-//			websocket.send(JSON.stringify(log));
-//		}catch(e){
-//			
-//		}
-//	}
-//	
-//	console.log = function(log) {
-//		var json = {};
-//		json.grade = "log";
-//		json.message = log;
-//		send(json);
-//	}
-//	
-//	console.error = function(log) {
-//		var json = {};
-//		json.grade = "error";
-//		json.message = log;
-//		send(json);
-//	}
-//	
-//	console.info = function(log) {
-//		var json = {};
-//		json.grade = "info";
-//		json.message = log;
-//		send(json);
-//	}
-//	
-//	console.warn = function(log) {
-//		var json = {};
-//		json.grade = "warn";
-//		json.message = log;
-//		send(json);
-//	}
-//	
-//	window.onerror = function(errorMessage,scriptURI,lineNumber,columnNumber){
-//		reportError({
-//			message: errorMessage,
-//			script: scriptURI,
-//			line: lineNumber,
-//			column: columnNumber
-//		});
-//	}
-//	
-//	function reportError(error){
-//		console.error(JSON.stringify(error));
-//	}
-//	
-//	/**
-//	 * 日志工厂
-//	 */
-//	var logger = function(window){
-//		return {
-//			getLogger : function(name){
-//				return new _logger(name);
-//			}
-//		};
-//	}(typeof window === 'undifined' ? this: window);
-//
-//	/**
-//	 * 日志类
-//	 */
-//	function _logger(name){
-//		this.name = name;
-//		
-//		/**
-//		 * 日志级别:info
-//		 */
-//		this.info = function(log) {
-//			var json = {};
-//			json.grade = "info";
-//			json.message = log;
-//			json.name = this.name;
-//			send(json);
-//	    };
-//	    
-//	    /**
-//		 * 日志级别:info
-//		 */
-//	    this.log = function(log) {
-//			var json = {};
-//			json.grade = "log";
-//			json.message = log;
-//			json.name = this.name;
-//			send(json);
-//		}
-//
-//	    /**
-//		 * 日志级别:error
-//		 */
-//	    this.error = function(log) {
-//			var json = {};
-//			json.grade = "error";
-//			json.message = log;
-//			json.name = this.name;
-//			send(json);
-//		}
-//
-//	    /**
-//		 * 日志级别:warn
-//		 */
-//	    this.warn = function(log) {
-//			var json = {};
-//			json.grade = "warn";
-//			json.message = log;
-//			json.name = this.name;
-//			send(json);
-//		}
-//	}
+	//日志发送
+	function send(log){
+		log.type = navigator.userAgent
+		
+		try{
+			websocket.send(JSON.stringify(log));
+		}catch(e){
+			
+		}
+	}
+	
+	console.log = function(log) {
+		var json = {};
+		json.grade = "log";
+		json.message = log;
+		send(json);
+	}
+	
+	console.error = function(log) {
+		var json = {};
+		json.grade = "error";
+		json.message = log;
+		send(json);
+	}
+	
+	console.info = function(log) {
+		var json = {};
+		json.grade = "info";
+		json.message = log;
+		send(json);
+	}
+	
+	console.warn = function(log) {
+		var json = {};
+		json.grade = "warn";
+		json.message = log;
+		send(json);
+	}
+	
+	window.onerror = function(errorMessage,scriptURI,lineNumber,columnNumber){
+		reportError({
+			message: errorMessage,
+			script: scriptURI,
+			line: lineNumber,
+			column: columnNumber
+		});
+	}
+	
+	function reportError(error){
+		console.error(JSON.stringify(error));
+	}
+	
+	/**
+	 * 日志工厂
+	 */
+	var logger = function(window){
+		return {
+			getLogger : function(name){
+				return new _logger(name);
+			}
+		};
+	}(typeof window === 'undifined' ? this: window);
+
+	/**
+	 * 日志类
+	 */
+	function _logger(name){
+		this.name = name;
+		
+		/**
+		 * 日志级别:info
+		 */
+		this.info = function(log) {
+			var json = {};
+			json.grade = "info";
+			json.message = log;
+			json.name = this.name;
+			send(json);
+	    };
+	    
+	    /**
+		 * 日志级别:info
+		 */
+	    this.log = function(log) {
+			var json = {};
+			json.grade = "log";
+			json.message = log;
+			json.name = this.name;
+			send(json);
+		}
+
+	    /**
+		 * 日志级别:error
+		 */
+	    this.error = function(log) {
+			var json = {};
+			json.grade = "error";
+			json.message = log;
+			json.name = this.name;
+			send(json);
+		}
+
+	    /**
+		 * 日志级别:warn
+		 */
+	    this.warn = function(log) {
+			var json = {};
+			json.grade = "warn";
+			json.message = log;
+			json.name = this.name;
+			send(json);
+		}
+	}
